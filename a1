@@ -46,6 +46,12 @@ Instance.new("UICorner", mainFrame)
 makeDraggable(mainFrame)
 
 -- Input Boxes
+local dragZone = Instance.new("Frame", mainFrame)
+dragZone.Size = UDim2.new(1, 0, 0, 30)
+dragZone.Position = UDim2.new(0, 0, 0, 0)
+dragZone.BackgroundTransparency = 1
+dragZone.Name = "DragZone"
+makeDraggable(dragZone)
 local function createTextBox(parent, posY, placeholder)
 	local box = Instance.new("TextBox", parent)
 	box.Size = UDim2.new(1, -20, 0, 30)
@@ -103,7 +109,13 @@ local deleteBtn = createButton("Delete", mainFrame, UDim2.new(2/3, 5, 0, 250), U
 
 -- Dropdown Logic
 local dropdownOpen = false
-local dropdownFrame = Instance.new("Frame", mainFrame)
+local dropdownFrame = Instance.new("ScrollingFrame", mainFrame)
+dropdownFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
+dropdownFrame.ScrollBarThickness = 6
+dropdownFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
+dropdownFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
+dropdownFrame.ClipsDescendants = true
+dropdownFrame.ScrollingDirection = Enum.ScrollingDirection.Y
 dropdownFrame.Position = UDim2.new(0, 10, 0, 200)
 dropdownFrame.Size = UDim2.new(1, -20, 0, 80)
 dropdownFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
